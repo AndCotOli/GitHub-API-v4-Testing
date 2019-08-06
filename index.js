@@ -15,8 +15,9 @@ async function main() {
  {
    viewer {
      login
-     organization(login: "Coding Garden Community") {
-       id
+     organization(login: "CodingGardenCommunity") {
+       url
+       name
      }
    }
  }
