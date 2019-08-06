@@ -12,15 +12,17 @@ async function main() {
   const client = new GraphQLClient(url, options);
 
   const query = `
- {
-   viewer {
-     login
-     organization(login: "CodingGardenCommunity") {
-       url
-       name
-     }
-   }
- }
+  mutation {
+    createPullRequest(input: {
+      baseRefName: "master", 
+      repositoryId: "MDEwOlJlcG9zaXRvcnkyMDA2NTA2MDQ=", 
+      headRefName:"master", #This doesn't work
+      body: "test body for the pull request",
+      title: "test pull request"
+    }) {
+      clientMutationId,
+    }
+  }
 `;
 
   const data = await client.request(query);
